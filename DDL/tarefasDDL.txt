@@ -1,0 +1,12 @@
+CREATE TABLE `tb_tarefas` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `id_usuario` int DEFAULT NULL,
+  `id_status` int NOT NULL DEFAULT '1',
+  `tarefa` text NOT NULL,
+  `data_cadastrado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `id_status` (`id_status`),
+  KEY `fk_id_usuario` (`id_usuario`),
+  CONSTRAINT `fk_id_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuarios` (`id`),
+  CONSTRAINT `tb_tarefas_ibfk_1` FOREIGN KEY (`id_status`) REFERENCES `tb_status` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
